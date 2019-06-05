@@ -1,15 +1,18 @@
 <template lang="pug">
   .home-container
-    h1 this is the home page
-    form(@submit.prevent="citySearch")
-      label(for="search") City Name
+    header
+      h1 Brinder
+      h3 Brewery Finder
+    .input-container
+      label.search(for="search") 
+        | Find a Brewery
+        i.far.fa-beer
       input(
         id="search"
         type="text"
-        v-model="city"
-        placeholder="Enter City Name"
+        v-model="searchValue"
+        placeholder="Brewery Name, City, or State"
       )
-      button(type="submit") Search
     BreweryList(
       :breweries="breweries"
     )
@@ -27,21 +30,55 @@ export default {
   data () {
     return {
       breweries: [],
-      city: ''
+      searchValue: ''
     }
   },
-  mounted () {
-    axios
-      .get('https://api.openbrewerydb.org/breweries')
-      .then(resp => this.breweries = resp.data)
-  },
-  methods: {
-    citySearch () {
+  watch: {
+    searchValue: function() {
       axios
-        .get(`https://api.openbrewerydb.org/breweries?by_city=${this.city}`)
+        .get(`https://api.openbrewerydb.org/breweries/search?query=${this.searchValue}&per_page=50`)
         .then(resp => this.breweries = resp.data)
-      this.city = ''
     }
   }
 }
 </script>
+
+<style lang="scss" scoped>
+@import '../design/variables.scss';
+
+.home-container {
+  background-color: $black;
+}
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: $yellow;
+
+  h1 {
+    margin: 15px 0 0 0;
+    font-size: 44px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    line-height: 30px;
+  }
+
+  h3 {
+    margin: 0 0 30px 0;
+    font-size: 24px;
+  }
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .search {
+    margin: 0;
+    color: $white;
+  }
+}
+</style>
+
+
