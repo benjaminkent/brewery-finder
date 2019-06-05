@@ -19,6 +19,9 @@
     BreweryList(
       :breweries="breweries"
     )
+    .pagination(v-if="breweries.length !== 0")
+      p(@click="previous") Previous
+      p(@click="next") Next
 </template>
 
 <script>
@@ -33,7 +36,16 @@ export default {
   data () {
     return {
       breweries: [],
-      searchValue: ''
+      searchValue: '',
+      pageNumber: 1
+    }
+  },
+  methods: {
+    next () {
+      console.log('next')
+    },
+    previous () {
+      console.log('previous')
     }
   },
   watch: {
@@ -125,6 +137,25 @@ export default {
 .far {
   color: $yellow;
   margin-left: 5px;
+}
+
+.pagination {
+  color: $yellow;
+  text-decoration: underline;
+  cursor: pointer;
+  display: flex;
+  justify-content: flex-end;
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px 0 50px 0;
+
+  p {
+    margin: 0;
+  }
+
+  p:first-child {
+    margin-right: 20px;
+  }
 }
 
 @media(min-width: 1000px) {
