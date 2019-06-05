@@ -1,18 +1,47 @@
-<template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+<template lang="pug">
+  .home-container
+    h1 this is the home page
+    form(@submit.prevent="citySearch")
+      label(for="search") City Name
+      input(
+        id="search"
+        type="text"
+        v-model="city"
+        placeholder="Enter City Name"
+      )
+      button(type="submit") Search
+    BreweryList(
+      :breweries="breweries"
+    )
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import axios from 'axios'
+import BreweryList from '../components/BreweryList'
 
 export default {
   name: 'home',
   components: {
-    HelloWorld
+    BreweryList
+  },
+  data () {
+    return {
+      breweries: [],
+      city: ''
+    }
+  },
+  mounted () {
+    axios
+      .get('https://api.openbrewerydb.org/breweries')
+      .then(resp => this.breweries = resp.data)
+  },
+  methods: {
+    citySearch () {
+      axios
+        .get(`https://api.openbrewerydb.org/breweries?by_city=${this.city}`)
+        .then(resp => this.breweries = resp.data)
+      this.city = ''
+    }
   }
 }
 </script>
