@@ -5,7 +5,7 @@
     p Brewery Type: {{ brewery.brewery_type }}
     p {{ brewery.street }}
     p {{ brewery.city }}, {{ brewery.state }}
-    p Phone: {{ brewery.phone }}
+    p(v-if="brewery.phone.length !== 0") Phone: {{ brewery.phone }}
     p(v-if="brewery.website_url.length !== 0") Website: 
       a(:href="brewery.website_url" target="_blank") {{ brewery.website_url }}
 </template>
