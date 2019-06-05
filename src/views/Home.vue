@@ -20,8 +20,10 @@
       :breweries="breweries"
     )
     .pagination(v-if="breweries.length !== 0")
-      p(@click="previous") Previous
-      p(@click="next") Next
+      p.previous(@click="previous" v-if="pageNumber > 1") Previous
+      p.previous.disabled(v-if="pageNumber === 1") Previous
+      p(@click="next" v-if="breweries.length === 20") Next
+      p.disabled(v-if="breweries.length < 20") Next
 </template>
 
 <script>
@@ -37,21 +39,29 @@ export default {
     return {
       breweries: [],
       searchValue: '',
-      pageNumber: 1
+      pageNumber: 1,
+      disabled: false
     }
   },
   methods: {
     next () {
-      console.log('next')
+      this.pageNumber++
+      axios
+        .get(`https://api.openbrewerydb.org/breweries/search?query=${this.searchValue}&page=${this.pageNumber}&per_page=20`)
+        .then(resp => this.breweries = resp.data)
     },
     previous () {
-      console.log('previous')
+      this.pageNumber--
+      axios
+        .get(`https://api.openbrewerydb.org/breweries/search?query=${this.searchValue}&page=${this.pageNumber}&per_page=20`)
+        .then(resp => this.breweries = resp.data)
     }
   },
   watch: {
     searchValue: function() {
+      this.pageNumber = 1
       axios
-        .get(`https://api.openbrewerydb.org/breweries/search?query=${this.searchValue}&per_page=50`)
+        .get(`https://api.openbrewerydb.org/breweries/search?query=${this.searchValue}&page=1&per_page=20`)
         .then(resp => this.breweries = resp.data)
     }
   }
@@ -140,8 +150,6 @@ export default {
 }
 
 .pagination {
-  color: $yellow;
-  text-decoration: underline;
   cursor: pointer;
   display: flex;
   justify-content: flex-end;
@@ -150,11 +158,18 @@ export default {
   padding: 20px 0 50px 0;
 
   p {
+    text-decoration: underline;
+    color: $yellow;
     margin: 0;
   }
 
-  p:first-child {
+  .previous {
     margin-right: 20px;
+  }
+
+  .disabled {
+    color: #a07a20;
+    cursor: not-allowed;
   }
 }
 
