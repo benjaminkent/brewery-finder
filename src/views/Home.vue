@@ -48,6 +48,7 @@ export default {
 
 .home-container {
   background-color: $black;
+  min-height: 100vh;
 }
 header {
   display: flex;
@@ -69,6 +70,11 @@ header {
   }
 }
 
+.far {
+  color: $yellow;
+  margin-left: 5px;
+}
+
 .input-container {
   display: flex;
   flex-direction: column;
@@ -77,6 +83,16 @@ header {
   .search {
     margin: 0;
     color: $white;
+  }
+
+  input {
+    width: 90%;
+    max-width: 500px;
+    height: 25px;
+    border-radius: 5px;
+    border: 1px solid $yellow;
+    text-indent: 10px;
+    font-size: 12px;
   }
 }
 </style>
