@@ -1,6 +1,6 @@
 <template lang="pug">
   .list-container
-    ul
+    ul#list-top
       li(v-for="brewery in breweries") 
         router-link(:to="`/brewery/${brewery.id}`")
           .details

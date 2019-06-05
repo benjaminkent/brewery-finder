@@ -20,10 +20,18 @@
       :breweries="breweries"
     )
     .pagination(v-if="breweries.length !== 0")
-      p.previous(@click="previous" v-if="pageNumber > 1") Previous
-      p.previous.disabled(v-if="pageNumber === 1") Previous
-      p(@click="next" v-if="breweries.length === 20") Next
-      p.disabled(v-if="breweries.length < 20") Next
+      p.previous(
+        @click="previous"
+        v-if="pageNumber > 1"
+        v-scroll-to="'#list-top'"
+      ) Previous
+      p.previous.disabled(v-if="pageNumber === 1" v-scroll-to="'#list-top'") Previous
+      p(
+        @click="next"
+        v-if="breweries.length === 20"
+        v-scroll-to="'#list-top'"
+      ) Next
+      p.disabled(v-if="breweries.length < 20" v-scroll-to="'#list-top'") Next
 </template>
 
 <script>
@@ -39,8 +47,7 @@ export default {
     return {
       breweries: [],
       searchValue: '',
-      pageNumber: 1,
-      disabled: false
+      pageNumber: 1
     }
   },
   methods: {
