@@ -73,7 +73,7 @@ export default {
 
 .brewery-container {
   background-color: $black;
-  min-height: 100vh;
+  min-height: 92vh;
   color: $white;
 }
 
@@ -87,6 +87,8 @@ header {
   $black 5px,
   $black 15px
   );
+  border-top: 1px solid #333;
+  border-bottom: 1px solid #333;
 }
 
 .map-container {

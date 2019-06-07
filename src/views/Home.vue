@@ -85,7 +85,7 @@ export default {
 
 .home-container {
   background-color: $black;
-  min-height: 100vh;
+  min-height: 92vh;
 }
 
 .hero-grid {
@@ -99,6 +99,14 @@ export default {
     grid-area: 1 / 1 / 2 / 4;
     color: $yellow;
     height: 100px;
+    background: repeating-linear-gradient(
+      135deg,
+      #333,
+      #333 5px,
+      $black 5px,
+      $black 15px
+    );
+    border-bottom: 1px solid #333;
 
     header {
       display: flex;
