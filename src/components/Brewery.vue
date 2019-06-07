@@ -4,7 +4,7 @@
       router-link.home(to="/") Home
     header
       h1 {{ brewery.name }}
-      p Brewery Type: {{ brewery.brewery_type }}
+      p Brewery Type: {{ type }}
     .map-container(v-if="brewery.latitude")
       GmapMap(
         :center="breweryLocation"
@@ -39,6 +39,7 @@ export default {
       brewery: {},
       breweryLocation: {},
       markers: [],
+      type: ''
     }
   },
   mounted () {
@@ -54,7 +55,14 @@ export default {
           this.brewery = resp.data,
           this.breweryLocation = { lat: lat, lng: lng }
           this.markers.push({ position: {lat: lat, lng: lng} })
+          this.type = this.capitalize(resp.data.brewery_type)
         })
+    },
+    capitalize (val) {
+      if (val === '') {
+        return 'Unknown'
+      }
+      return val.charAt(0).toUpperCase() + val.slice(1)
     }
   }
 }
