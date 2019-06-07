@@ -1,13 +1,15 @@
 <template lang="pug">
   .brewery-container
-    router-link(to="/") Home
-    h1 {{ brewery.name }}
-    p Brewery Type: {{ brewery.brewery_type }}
+    .back-button
+      router-link.home(to="/") Home
+    header
+      h1 {{ brewery.name }}
+      p Brewery Type: {{ brewery.brewery_type }}
     .map-container(v-if="brewery.latitude")
       GmapMap(
         :center="breweryLocation"
-        :zoom="15"
-        style="width: 90%; height: 300px"
+        :zoom="13"
+        style="max-width: 500px; height: 300px"
       )
         GmapMarker(
           :key="index"
@@ -17,10 +19,14 @@
           :draggable="true"
           @click="center=m.position"
         )
-    p {{ brewery.street }}
-    p {{ brewery.city }}, {{ brewery.state }}
-    p(v-if="brewery.phone") Phone: {{ brewery.phone }}
-    p(v-if="brewery.website_url") Email: {{ brewery.website_url }}
+    .details-container
+      .address
+        p {{ brewery.street }}
+        p {{ brewery.city }}, {{ brewery.state }}
+      p(v-if="brewery.phone") Phone: {{ brewery.phone }}
+      p(v-if="brewery.website_url") 
+        | Email: 
+        a(:href="brewery.website_url" target="_blank") {{ brewery.website_url }}
 </template>
 
 <script>
@@ -61,7 +67,38 @@ export default {
   background-color: $black;
   min-height: 100vh;
   color: $white;
-  padding: 20px;
+}
+
+header {
+  margin: 0 0 10px 0;
+  padding: 10px 20px;
+  background: repeating-linear-gradient(
+  135deg,
+  #333,
+  #333 5px,
+  $black 5px,
+  $black 15px
+  );
+}
+
+.map-container {
+  margin: 0 20px;
+}
+
+.back-button {
+  padding: 10px 0;
+
+  .home {
+    margin-left: 20px;
+  }
+}
+
+.details-container {
+  margin: 20px;
+}
+
+.address {
+  margin-bottom: 10px;
 }
 
 a {

@@ -11,7 +11,7 @@ Vue.config.productionTip = false
 Vue.use(VueScrollTo)
 Vue.use(VueGoogleMaps, {
   load: {
-    key: 'AIzaSyDlFqQ9mdP062pc_dGksw-EI6ZHoiYQGPM',
+    key: process.env.VUE_APP_MAP_API,
     libraries: 'places'
   }
 })

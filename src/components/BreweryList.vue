@@ -43,7 +43,7 @@ a {
   color: $white;
 
   .details {
-    margin: 10px;
+    padding: 10px;
 
     h2 {
       margin: 0;

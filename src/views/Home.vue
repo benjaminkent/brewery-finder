@@ -4,8 +4,12 @@
       .hero-background
       .header
         header
-          h1 Brinder
-          h3 Brewery Finder
+          h1
+            b B
+            | rew
+            b L
+            | o
+          h3 Brewery Locator
       .input-container
         label.search(for="search") 
           | Find a Brewery
@@ -16,6 +20,7 @@
           v-model="searchValue"
           placeholder="Brewery Name, City, or State"
         )
+    p.photo-credit Photo Credit: Cycle Brewing, St. Petersburg, FL
     BreweryList(
       :breweries="breweries"
     )
@@ -105,7 +110,7 @@ export default {
       h1 {
         margin: 0;
         font-size: 44px;
-        font-weight: 400;
+        font-weight: 100;
         letter-spacing: 1px;
         line-height: 30px;
         text-align: center;
@@ -149,6 +154,15 @@ export default {
     background-size: cover;
     background-position: center;
   }
+}
+
+.photo-credit {
+  color: #aaa;
+  margin: 0;
+  font-weight: 100;
+  font-style: italic;
+  margin-left: 2%;
+  font-size: 12px;
 }
 
 .far {
