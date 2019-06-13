@@ -73,7 +73,7 @@ export default {
 
 .brewery-container {
   background-color: $black;
-  min-height: 92vh;
+  min-height: 100vh;
   color: $white;
 }
 

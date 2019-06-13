@@ -20,7 +20,8 @@ export default {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
 }
 
-body {
+body, html {
   margin: 0;
+  height: 100%;
 }
 </style>

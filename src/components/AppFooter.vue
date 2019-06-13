@@ -5,7 +5,9 @@
         | Made with
         i.far.fa-beer
         | in St. Petersburg, FL
-      p.bottom-line Benjamin Kent, 2019
+      p.bottom-line
+        | Benjamin Kent, 2019.
+        a(href="https://www.benjaminkent.io/") benjaminkent.io
 </template>
 
 <script>
@@ -26,10 +28,11 @@ export default {
     $black 15px
   );
   border-top: 1px solid #333;
+  margin: -25px;
 
   footer {
     margin: 0;
-    padding: 20px 0;
+    padding: 25px 0;
   }
 }
 
@@ -44,6 +47,11 @@ p {
   color: $white;
   font-size: 14px;
   font-weight: 100;
+}
+
+a {
+  color: $yellow;
+  margin-left: 5px;
 }
 </style>
 

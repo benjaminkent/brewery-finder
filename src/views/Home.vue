@@ -85,7 +85,7 @@ export default {
 
 .home-container {
   background-color: $black;
-  min-height: 92vh;
+  min-height: 100vh;
 }
 
 .hero-grid {
@@ -166,10 +166,9 @@ export default {
 
 .photo-credit {
   color: #aaa;
-  margin: 0;
   font-weight: 100;
   font-style: italic;
-  margin-left: 2%;
+  margin: 0 0 0 2%;
   font-size: 12px;
 }
 
