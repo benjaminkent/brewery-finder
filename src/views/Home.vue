@@ -98,10 +98,6 @@ export default {
 
 <style lang="scss" scoped>
 @import '../design/variables.scss';
-@import url('https://fonts.googleapis.com/css?family=Pacifico&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Righteous&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Grand+Hotel&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Lily+Script+One&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Megrim&display=swap');
 
 .home-container {
