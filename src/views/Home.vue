@@ -3,7 +3,7 @@
     .hero-grid
       .hero-background
       .header
-        header
+        header(@click="goHome")
           h1
             b B
             | rew
@@ -81,6 +81,11 @@ export default {
       axios
         .get(`https://api.openbrewerydb.org/breweries/search?query=${this.searchValue}&page=${this.pageNumber}&per_page=20`)
         .then(resp => this.breweries = resp.data)
+    },
+    goHome () {
+      this.$router.push({ name: 'home' })
+      this.breweries = []
+      this.searchValue = ''
     }
   },
   watch: {
@@ -129,6 +134,7 @@ export default {
       justify-content: center;
       align-items: center;
       height: 100%;
+      cursor: pointer;
 
       h1 {
         margin: 0;

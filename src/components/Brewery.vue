@@ -44,6 +44,7 @@ export default {
   },
   mounted () {
     this.fetchBrewery()
+    window.scrollTo(0,0)
   },
   methods: {
     fetchBrewery () {
