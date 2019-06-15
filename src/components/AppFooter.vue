@@ -28,7 +28,7 @@ export default {
     $black 15px
   );
   border-top: 1px solid #333;
-  margin: -25px;
+  margin: -25px 0;
 
   footer {
     margin: 0;

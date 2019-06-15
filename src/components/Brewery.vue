@@ -1,7 +1,7 @@
 <template lang="pug">
   .brewery-container
     .back-button
-      router-link.home(to="/") Home
+      p.back(@click="goBack") Back
     header
       h1 {{ brewery.name }}
       p Brewery Type: {{ type }}
@@ -63,6 +63,9 @@ export default {
         return 'Unknown'
       }
       return val.charAt(0).toUpperCase() + val.slice(1)
+    },
+    goBack () {
+      this.$router.go(-1)
     }
   }
 }
@@ -76,6 +79,7 @@ export default {
   min-height: 100vh;
   color: $white;
 }
+
 
 header {
   margin: 0 0 10px 0;
@@ -97,8 +101,11 @@ header {
 
 .back-button {
   padding: 10px 0;
-
-  .home {
+  
+  .back {
+    color: $yellow;
+    cursor: pointer;
+    text-decoration: underline;
     margin-left: 20px;
   }
 }

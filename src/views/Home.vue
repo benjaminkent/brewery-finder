@@ -52,18 +52,32 @@ export default {
     return {
       breweries: [],
       searchValue: '',
-      pageNumber: 1
+      pageNumber: 1,
+      loaded: false
     }
+  },
+  mounted () {
+    let queryString = this.$route.query.parameter
+    let page = this.$route.query.page
+    if (!queryString) { return }
+    this.loaded = true
+    this.searchValue = queryString
+    this.pageNumber = page
+    axios
+      .get(`https://api.openbrewerydb.org/breweries/search?query=${queryString}&page=${page}&per_page=20`)
+      .then(resp => this.breweries = resp.data)
   },
   methods: {
     next () {
       this.pageNumber++
+      this.$router.push({ query: { parameter: this.searchValue, page: this.pageNumber }})
       axios
         .get(`https://api.openbrewerydb.org/breweries/search?query=${this.searchValue}&page=${this.pageNumber}&per_page=20`)
         .then(resp => this.breweries = resp.data)
     },
     previous () {
       this.pageNumber--
+      this.$router.push({ query: { parameter: this.searchValue, page: this.pageNumber }})
       axios
         .get(`https://api.openbrewerydb.org/breweries/search?query=${this.searchValue}&page=${this.pageNumber}&per_page=20`)
         .then(resp => this.breweries = resp.data)
@@ -71,9 +85,10 @@ export default {
   },
   watch: {
     searchValue: function() {
-      this.pageNumber = 1
+      if (this.loaded) { return }
+      this.$router.push({ query: { parameter: this.searchValue, page: this.pageNumber }})
       axios
-        .get(`https://api.openbrewerydb.org/breweries/search?query=${this.searchValue}&page=1&per_page=20`)
+        .get(`https://api.openbrewerydb.org/breweries/search?query=${this.searchValue}&page=${this.pageNumber}&per_page=20`)
         .then(resp => this.breweries = resp.data)
     }
   }
