@@ -4,11 +4,7 @@
       .hero-background
       .header
         header(@click="goHome")
-          h1
-            b B
-            | rew
-            b L
-            | o
+          h1.neon-sign Brew Lo
           h3 Brewery Locator
       .input-container
         label.search(for="search") 
@@ -102,6 +98,11 @@ export default {
 
 <style lang="scss" scoped>
 @import '../design/variables.scss';
+@import url('https://fonts.googleapis.com/css?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Righteous&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Grand+Hotel&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Lily+Script+One&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Megrim&display=swap');
 
 .home-container {
   background-color: $black;
@@ -119,6 +120,7 @@ export default {
     grid-area: 1 / 1 / 2 / 4;
     color: $yellow;
     height: 100px;
+    border-bottom: 1px solid #333;
     background: repeating-linear-gradient(
       135deg,
       #333,
@@ -126,29 +128,31 @@ export default {
       $black 5px,
       $black 15px
     );
-    border-bottom: 1px solid #333;
 
     header {
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      justify-content: flex-end;
       height: 100%;
       cursor: pointer;
 
-      h1 {
+      .neon-sign {
+        // font-family: 'Lily Script One', cursive;
+        font-family: 'Megrim', cursive;
         margin: 0;
+        color: $neon;
         font-size: 44px;
         font-weight: 100;
         letter-spacing: 1px;
         line-height: 30px;
         text-align: center;
+        text-shadow: 0 0 15px #fff, 0 0 25px #fff, 0 0 35px #fff, 0 0 40px $yellow, 0 0 50px $yellow, 0 0 60px $yellow, 0 0 75px $yellow, 0 0 90px $yellow;
       }
       
       h3 {
         font-size: 24px;
         text-align: center;
-        margin: 0;
+        margin: 5px 0 5px 0;
       }
     }
   }
