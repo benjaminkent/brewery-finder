@@ -4,7 +4,10 @@
       .hero-background
       .header
         header(@click="goHome")
-          h1.neon-sign Brew Lo
+          .sign
+            h1.neon-sign.neon Br
+            h1.neon-sign.neon e
+            h1.neon-sign.neon w Lo
           h3.locator Brewery Locator
       .input-container
         label.search(for="search") 
@@ -120,7 +123,6 @@ export default {
   .header {
     grid-area: 1 / 1 / 2 / 4;
     color: $yellow;
-    height: 100px;
     border-bottom: 1px solid #333;
     background: repeating-linear-gradient(
       135deg,
@@ -134,26 +136,36 @@ export default {
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
-      height: 100%;
       cursor: pointer;
+      padding: 5px 0 5px 0;
 
-      .neon-sign {
-        font-family: 'Megrim', cursive;
-        margin: 0;
-        color: $neon;
-        font-size: 44px;
-        font-weight: 100;
-        letter-spacing: 1px;
-        line-height: 30px;
-        text-align: center;
-        color: $blue;
-        text-shadow: 0 0 15px #fff, 0 0 25px #fff, 0 0 35px #fff, 0 0 40px $blue, 0 0 50px $blue, 0 0 60px $blue, 0 0 75px $blue, 0 0 90px $blue;
+      .sign {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        color: #777;
+
+        .flicker {
+        }
+
+        .neon-sign {
+          font-family: 'Megrim', cursive;
+          margin: 0;
+          font-size: 44px;
+          font-weight: 100;
+          letter-spacing: 1px;
+        }
+
+        .neon {
+          color: $blue;
+          text-shadow: 0 0 15px #fff, 0 0 25px #fff, 0 0 35px #fff, 0 0 40px $blue, 0 0 50px $blue, 0 0 60px $blue, 0 0 75px $blue, 0 0 90px $blue;
+        }
       }
       
       .locator {
         font-size: 24px;
         text-align: center;
-        margin: 5px 0 5px 0;
+        margin: 0;
         color: $yellow;
       }
     }
@@ -228,6 +240,16 @@ export default {
   .disabled {
     color: #a07a20;
     cursor: not-allowed;
+  }
+}
+
+@media(max-width: 999px) {
+  .hero-grid {
+    .header {
+      header {
+        padding: 0;
+      }
+    }
   }
 }
 
