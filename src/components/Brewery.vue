@@ -73,8 +73,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../design/variables.scss';
-
 .brewery-container {
   background-color: $black;
   min-height: 100vh;

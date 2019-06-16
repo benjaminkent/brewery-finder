@@ -18,8 +18,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../design/variables.scss';
-
 ul {
   margin: 5px 0;
   padding: 0;

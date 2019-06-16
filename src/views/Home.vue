@@ -94,7 +94,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../design/variables.scss';
 @import url('https://fonts.googleapis.com/css?family=Megrim&display=swap');
 
 .home-container {

@@ -17,8 +17,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../design/variables.scss';
-
 .footer {
   background: repeating-linear-gradient(
     45deg,
