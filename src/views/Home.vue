@@ -5,7 +5,7 @@
       .header
         header(@click="goHome")
           h1.neon-sign Brew Lo
-          h3 Brewery Locator
+          h3.locator Brewery Locator
       .input-container
         label.search(for="search") 
           | Find a Brewery
@@ -129,7 +129,6 @@ export default {
       cursor: pointer;
 
       .neon-sign {
-        // font-family: 'Lily Script One', cursive;
         font-family: 'Megrim', cursive;
         margin: 0;
         color: $neon;
@@ -138,13 +137,15 @@ export default {
         letter-spacing: 1px;
         line-height: 30px;
         text-align: center;
-        text-shadow: 0 0 15px #fff, 0 0 25px #fff, 0 0 35px #fff, 0 0 40px $yellow, 0 0 50px $yellow, 0 0 60px $yellow, 0 0 75px $yellow, 0 0 90px $yellow;
+        color: $blue;
+        text-shadow: 0 0 15px #fff, 0 0 25px #fff, 0 0 35px #fff, 0 0 40px $blue, 0 0 50px $blue, 0 0 60px $blue, 0 0 75px $blue, 0 0 90px $blue;
       }
       
-      h3 {
+      .locator {
         font-size: 24px;
         text-align: center;
         margin: 5px 0 5px 0;
+        color: $yellow;
       }
     }
   }
