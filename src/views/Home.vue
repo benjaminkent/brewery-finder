@@ -48,15 +48,13 @@ export default {
     return {
       breweries: [],
       searchValue: '',
-      pageNumber: 1,
-      loaded: false
+      pageNumber: 1
     }
   },
   mounted () {
     let queryString = this.$route.query.parameter
     let page = this.$route.query.page
     if (!queryString) { return }
-    this.loaded = true
     this.searchValue = queryString
     this.pageNumber = page
     axios
@@ -86,7 +84,6 @@ export default {
   },
   watch: {
     searchValue: function() {
-      if (this.loaded) { return }
       this.$router.push({ query: { parameter: this.searchValue, page: this.pageNumber }})
       axios
         .get(`https://api.openbrewerydb.org/breweries/search?query=${this.searchValue}&page=${this.pageNumber}&per_page=20`)
