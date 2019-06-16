@@ -84,6 +84,12 @@ export default {
   },
   watch: {
     searchValue: function() {
+      // fix api call on home button bug
+      if (!this.searchValue) { return }
+      if (this.searchValue.length === 1) {
+        this.pageNumber = 1
+      }
+
       this.$router.push({ query: { parameter: this.searchValue, page: this.pageNumber }})
       axios
         .get(`https://api.openbrewerydb.org/breweries/search?query=${this.searchValue}&page=${this.pageNumber}&per_page=20`)
