@@ -6,7 +6,7 @@
         header(@click="goHome")
           .sign
             h1.neon-sign.neon Br
-            h1.neon-sign(:class="{ neon: flickerOn }") e
+            h1.neon-sign(:class="{ neon: flickerOff }") e
             h1.neon-sign.neon w Lo
           h3.locator Brewery Locator
       .input-container
@@ -41,6 +41,7 @@
 <script>
 import axios from 'axios'
 import BreweryList from '../components/BreweryList'
+import { setInterval } from 'timers';
 
 export default {
   name: 'home',
@@ -52,10 +53,12 @@ export default {
       breweries: [],
       searchValue: '',
       pageNumber: 1,
-      flickerOn: true
+      flickerOff: true,
+      randomNumber: null
     }
   },
   mounted () {
+    this.generateRandomNumber()
     let queryString = this.$route.query.parameter
     let page = parseInt(this.$route.query.page)
     if (!queryString) { return }
@@ -84,6 +87,11 @@ export default {
       this.$router.push({ name: 'home' })
       this.breweries = []
       this.searchValue = ''
+    },
+    generateRandomNumber () {
+      setInterval(() => {
+        this.randomNumber = Math.floor(Math.random() * 4)
+      }, 125)
     }
   },
   watch: {
@@ -101,6 +109,13 @@ export default {
       axios
         .get(`https://api.openbrewerydb.org/breweries/search?query=${this.searchValue}&page=${this.pageNumber}&per_page=20`)
         .then(resp => this.breweries = resp.data)
+    },
+    randomNumber: function() {
+      if (this.randomNumber === 1) {
+        this.flickerOff = false
+      } else {
+        this.flickerOff = true
+      }
     }
   }
 }
