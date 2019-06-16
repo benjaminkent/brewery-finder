@@ -26,13 +26,13 @@
         v-if="pageNumber > 1"
         v-scroll-to="'#list-top'"
       ) Previous
-      p.previous.disabled(v-if="pageNumber === 1" v-scroll-to="'#list-top'") Previous
-      p(
+      p.previous.disabled(v-if="pageNumber === 1") Previous
+      p.next(
         @click="next"
         v-if="breweries.length === 20"
         v-scroll-to="'#list-top'"
       ) Next
-      p.disabled(v-if="breweries.length < 20" v-scroll-to="'#list-top'") Next
+      p.disabled(v-if="breweries.length < 20") Next
 </template>
 
 <script>
@@ -53,7 +53,7 @@ export default {
   },
   mounted () {
     let queryString = this.$route.query.parameter
-    let page = this.$route.query.page
+    let page = parseInt(this.$route.query.page)
     if (!queryString) { return }
     this.searchValue = queryString
     this.pageNumber = page
@@ -205,7 +205,6 @@ export default {
 }
 
 .pagination {
-  cursor: pointer;
   display: flex;
   justify-content: flex-end;
   width: 80%;
@@ -220,6 +219,10 @@ export default {
 
   .previous {
     margin-right: 20px;
+  }
+
+  .previous, .next {
+    cursor: pointer;
   }
 
   .disabled {
