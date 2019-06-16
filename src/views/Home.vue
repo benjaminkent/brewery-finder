@@ -6,7 +6,7 @@
         header(@click="goHome")
           .sign
             h1.neon-sign.neon Br
-            h1.neon-sign.neon e
+            h1.neon-sign(:class="{ neon: flickerOn }") e
             h1.neon-sign.neon w Lo
           h3.locator Brewery Locator
       .input-container
@@ -51,7 +51,8 @@ export default {
     return {
       breweries: [],
       searchValue: '',
-      pageNumber: 1
+      pageNumber: 1,
+      flickerOn: true
     }
   },
   mounted () {
