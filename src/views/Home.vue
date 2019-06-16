@@ -86,6 +86,9 @@ export default {
     searchValue: function() {
       // fix api call on home button bug
       if (!this.searchValue) { return }
+      // handle going back and not going to first page
+      // and set new inquires to start at page 1
+      // bug will still exist for a user only searching with on character
       if (this.searchValue.length === 1) {
         this.pageNumber = 1
       }
