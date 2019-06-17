@@ -174,7 +174,8 @@ export default {
 
         .neon {
           color: $blue;
-          text-shadow: 0 0 25px #fff, 0 0 35px #fff, 0 0 45px #fff, 0 0 50px $blue, 0 0 60px $blue, 0 0 70px $blue, 0 0 85px $blue, 0 0 100px $blue;
+          text-shadow: 0 0 15px #fff, 0 0 25px #fff, 0 0 35px #fff, 0 0 40px $blue, 0 0 50px $blue, 0 0 60px $blue, 0 0 75px $blue, 0 0 90px $blue;
+          text-shadow: 0 0 5px #fff, 0 0 15px #fff, 0 0 25px #fff, 0 0 50px $blue, 0 0 30px $blue, 0 0 40px $blue, 0 0 50px $blue, 0 0 40px $blue;
         }
       }
       
