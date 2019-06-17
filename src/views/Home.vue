@@ -161,9 +161,6 @@ export default {
         justify-content: center;
         color: #777;
 
-        .flicker {
-        }
-
         .neon-sign {
           font-family: 'Megrim', cursive;
           margin: 0;
