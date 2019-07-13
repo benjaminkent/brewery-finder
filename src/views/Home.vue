@@ -144,17 +144,17 @@ export default {
 
   .header {
     grid-area: 1 / 1 / 2 / 4;
-    color: $yellow;
-    border-bottom: 1px solid #333;
-    background: repeating-linear-gradient(
-      135deg,
-      #333,
-      #333 5px,
-      $black 5px,
-      $black 15px
-    );
 
     header {
+      color: $yellow;
+      border-bottom: 1px solid #333;
+      background: repeating-linear-gradient(
+        135deg,
+        #333,
+        #333 5px,
+        $black 5px,
+        $black 15px
+      );
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
