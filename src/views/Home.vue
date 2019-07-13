@@ -42,7 +42,6 @@
 <script>
 import axios from 'axios'
 import BreweryList from '../components/BreweryList'
-import { setInterval } from 'timers';
 
 export default {
   name: 'home',
