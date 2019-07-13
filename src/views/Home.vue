@@ -9,16 +9,17 @@
             h1.neon-sign(:class="{ neon: flickerOff }") e
             h1.neon-sign.neon w Lo
           h3.locator Brewery Locator
-      .input-container
-        label.search(for="search") 
-          | Find a Brewery
-          i.far.fa-beer
-        input(
-          id="search"
-          type="text"
-          v-model="searchValue"
-          placeholder="Brewery Name, City, or State"
-        )
+      .input-container-box
+        .input
+          label.search(for="search") 
+            | Find a Brewery
+            i.far.fa-beer
+          input(
+            id="search"
+            type="text"
+            v-model="searchValue"
+            placeholder="Brewery Name, City, or State"
+          )
     p.photo-credit Photo Credit: Cycle Brewing, St. Petersburg, FL
     BreweryList(
       :breweries="breweries"
@@ -190,28 +191,34 @@ export default {
     }
   }
 
-  .input-container {
+  .input-container-box {
     grid-area: 3 / 1 / 4 / 4;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 100%;
 
-    .search {
-      margin: 0;
-      color: $white;
-      font-size: 20px;
-    }
-
-    input {
+    .input {
       width: 90%;
       max-width: 500px;
-      height: 25px;
-      border-radius: 5px;
-      border: 1px solid $yellow;
-      text-indent: 10px;
-      font-size: 12px;
+
+      .search {
+        margin: 0;
+        color: $white;
+        font-size: 20px;
+      }
+
+      input {
+        width: 100%;
+        height: 25px;
+        border-radius: 5px;
+        border: 1px solid $yellow;
+        text-indent: 10px;
+        font-size: 12px;
+      }
     }
+
   }
 
   .hero-background {
