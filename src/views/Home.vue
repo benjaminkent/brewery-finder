@@ -60,7 +60,7 @@ export default {
   mounted () {
     this.generateRandomNumber()
     let queryString = this.$route.query.parameter
-    let page = parseInt(this.$route.query.page)
+    let page = Number(this.$route.query.page)
     if (!queryString) { return }
     this.searchValue = queryString
     this.pageNumber = page
