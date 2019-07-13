@@ -29,7 +29,7 @@
         v-if="pageNumber > 1"
         v-scroll-to="'#list-top'"
       ) Previous
-      p.previous.disabled(v-if="pageNumber === 1") Previous
+      p.previous-margin.disabled(v-if="pageNumber === 1") Previous
       p.next(
         @click="next"
         v-if="breweries.length === 20"
@@ -251,8 +251,16 @@ export default {
     cursor: pointer;
   }
 
+  .previous-margin {
+    margin-right: 20px;
+  }
+
+  .previous:hover, .next:hover {
+    color: $blue;
+  }
+
   .disabled {
-    color: #a07a20;
+    color: #a07a2050;
     cursor: not-allowed;
   }
 }

@@ -33,7 +33,11 @@ li {
   background-color: #282523;
   margin: 10px;
   border-radius: 5px;
-  box-shadow: 0px 0px 5px 2px #e6af2e60;
+  box-shadow: 0px 0px 5px 2px #e6af2e50;
+}
+
+li:hover {
+  box-shadow: 0px 0px 5px 2px #e6af2e;
 }
 
 a {
