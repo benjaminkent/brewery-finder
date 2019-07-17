@@ -64,15 +64,7 @@ export default {
     if (!queryString) { return }
     this.searchValue = queryString
     this.pageNumber = page
-    axios
-      .get(`https://api.openbrewerydb.org/breweries/search?query=${queryString}&page=${page}&per_page=20`)
-      .then(resp => this.breweries = resp.data)
-  },
-  updated () {
-    if (this.pageNumber > 1 && !this.breweries.length) {
-      this.pageNumber = 1
-      this.fetchBreweries(this.searchValue, 1)
-    }
+    this.fetchBreweries(this.searchValue, this.pageNumber)
   },
   methods: {
     fetchBreweries (value, number) {
@@ -103,11 +95,7 @@ export default {
   },
   watch: {
     searchValue: function() {
-      // fix api call on home button bug
       if (!this.searchValue) { return }
-      // handle going back and not going to first page
-      // and set new inquires to start at page 1
-      // bug will still exist for a user only searching with on character
       if (this.searchValue.length === 1) {
         this.pageNumber = 1
       }
