@@ -7,7 +7,7 @@
         | in St. Petersburg, FL
       p.bottom-line
         | Benjamin Kent, 2019.
-        a(href="https://www.benjaminkent.io/") benjaminkent.io
+        a(href="https://benkent.io/" target='_blank' rel='noreferrer noopener') benkent.io
 </template>
 
 <script>
